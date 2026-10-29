@@ -1,0 +1,130 @@
+/* The card's network artwork continues behind the single profile. */
+.site-content {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(130deg, #edf5ff, #f8fbff 48%, #e9f2ff);
+}
+.network-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.network-background::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 0% 30%, #0875f918, transparent 48%), radial-gradient(ellipse at 100% 80%, #076be91c, transparent 46%);
+}
+.network-background canvas, .network-skeleton { position: absolute; inset: 0; width: 100%; height: 100%; }
+.network-background canvas { opacity: .85; }
+.network-skeleton { opacity: .6; }
+.network-background.is-ready .network-skeleton { opacity: .12; }
+
+/* Stronger brand treatment without adding separate content sections. */
+.profile-panel {
+  --panel-x: 38px;
+  padding: 0 var(--panel-x) 27px;
+  border-color: #cddff4;
+  background: linear-gradient(145deg, #fff, #fffffffa 65%, #f4f9ff);
+  box-shadow: 0 24px 80px #0b3d7920, 0 3px 15px #085bb30a;
+}
+.profile-panel::before { z-index: 3; height: 2px; background: linear-gradient(90deg, #46b9ff, #006bff, #9bd4ff); }
+.profile-topbar {
+  position: relative; overflow: hidden;
+  margin: 0 calc(-1 * var(--panel-x)) 29px;
+  padding: 16px var(--panel-x);
+  display: flex; justify-content: space-between; align-items: center; gap: 20px;
+  color: #e6f1ff; background: linear-gradient(115deg, #071f46, #093d81 66%, #0867d8);
+  font-size: 10px; font-weight: 500; letter-spacing: .5px;
+}
+.profile-topbar::after {
+  content: ""; position: absolute; width: 270px; height: 180px; border: 1px solid #66b9ff55;
+  border-radius: 50%; right: 40px; top: -95px; transform: rotate(-25deg);
+  box-shadow: 0 0 0 24px #62b1ff0a, 0 0 0 25px #66b9ff33, 0 0 0 52px #62b1ff09;
+}
+.profile-topbar > span { position: relative; z-index: 1; display: flex; align-items: center; gap: 9px; }
+.profile-topbar > span:last-child { font-size: 9px; color: #b9d5f9; }
+.profile-topbar i { width: 5px; height: 5px; background: #75c8ff; border-radius: 50%; box-shadow: 0 0 8px #77d2ff88; }
+.panel-watermark { position: absolute; top: 75px; right: -45px; opacity: .035; pointer-events: none; transform: rotate(-12deg); }
+.panel-shine {
+  position: absolute; inset: 0 auto 0 0; width: 65%; z-index: 5; pointer-events: none;
+  background: linear-gradient(105deg, transparent 25%, #ffffff40 50%, transparent 75%);
+  transform: translateX(-160%);
+}
+.profile-overview, .contacts, .profile-actions { position: relative; z-index: 1; }
+.profile-overview { column-gap: 40px; }
+.portrait-block { border-color: #9dc8f6; box-shadow: 0 10px 28px #0d50a51c; }
+.portrait-frame { background: linear-gradient(145deg, #087df8, #073574); padding: 9px 9px 0; }
+.portrait-caption { background: #082c60; color: #e5f1ff; border-color: #114378; padding-block: 12px; }
+.portrait-accent { background: #65c2ff; box-shadow: 0 0 0 4px #ffffff0b; }
+h1 { font-size: clamp(35px, 3.8vw, 49px); letter-spacing: -2.2px; }
+.japanese-name { font-size: 18px; color: #617b9b; }
+.role { display: inline-block; max-width: 100%; padding: 7px 12px; border-left: 2px solid #0875f9; border-radius: 0 5px 5px 0; background: #edf5ff; font-size: 12px; }
+.profile-bio { font-size: 13px; line-height: 1.95; }
+.contacts-heading h2 { font-size: 21px; }
+.contacts-heading p { font-size: 11px; color: #6e829b; }
+.contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.contact-card { min-height: 82px; padding: 16px 18px; background: #fff; border-color: #d8e5f5; border-radius: 10px; box-shadow: 0 3px 8px #0752ad04; gap: 14px; }
+.contact-card:hover { background: #f1f7ff; box-shadow: 0 8px 22px #0875f914; border-color: #7bb6ff; }
+.contact-icon { width: 40px; height: 40px; border: 1px solid #d7eaff; border-radius: 11px; background: linear-gradient(140deg, #f0f8ff, #e1efff); }
+.contact-platform { font-size: 11px; font-weight: 400; }
+.contact-value { font-size: 13px; font-weight: 500; }
+.contact-arrow { color: #6194cf; width: 15px; height: 15px; }
+.profile-actions { margin-top: 24px; }
+.button-primary { background: linear-gradient(120deg, #087dff, #0560df); min-height: 46px; box-shadow: 0 7px 20px #0875f92b; }
+.share-button { border-color: #d0dff1; }
+.footer { color: #6581a4; }
+
+/* The white veil hides the page until the spiral reverses to open. */
+html { scrollbar-gutter: stable; }
+.intro { width: 100vw; height: 100dvh; right: auto; bottom: auto; background: transparent; mask-image: none; -webkit-mask-image: none; will-change: auto; }
+html[data-aperture-skip="1"] .intro { display: none; }
+.intro-veil { position: absolute; inset: 0; background: #fff; pointer-events: none; }
+.camera-aperture { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
+.intro-emblem { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(100px, 12vw, 136px); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #fff; z-index: 2; pointer-events: none; }
+.intro-emblem img { width: 56%; height: 56%; object-fit: contain; }
+.intro-logo-ring { position: absolute; inset: 0; border: 3px solid #cce6ff; border-top-color: #008fff; border-right-color: #0870e3; border-radius: 50%; animation: intro-logo-orbit 1.8s linear infinite; }
+@keyframes intro-logo-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .intro-logo-ring { animation: none; } }
+.intro-top { color: #183d6c; z-index: 3; }
+.intro-top > span { background: #ffffffd9; padding: 8px 12px; border-radius: 30px; display: flex; align-items: center; gap: 7px; }
+.intro-top-label { color: #5075a2; }
+.intro-skip { z-index: 3; background: #ffffffed; border-color: #bdd7f5; color: #254f82; }
+.intro-skip:hover { background: #edf6ff; }
+
+@media (max-width: 900px) {
+  .profile-panel { --panel-x: 28px; }
+  .profile-overview { column-gap: 29px; }
+  h1 { font-size: 35px; letter-spacing: -1.5px; }
+  .japanese-name { font-size: 15px; }
+  .role { font-size: 11px; }
+  .profile-bio { font-size: 12px; }
+  .contact-value { font-size: 12px; }
+}
+@media (max-width: 600px) {
+  .profile-panel { --panel-x: 20px; padding-bottom: 20px; }
+  .profile-topbar { padding-block: 13px; margin-bottom: 22px; font-size: 9px; }
+  .profile-topbar > span:last-child { font-size: 8px; }
+  .profile-overview { column-gap: 18px; }
+  .portrait-frame { padding: 5px 5px 0; }
+  .portrait-caption { padding: 8px 5px; }
+  h1 { font-size: 27px; letter-spacing: -1.2px; }
+  .japanese-name { font-size: 12px; }
+  .role { font-size: 10px; padding: 4px 8px; }
+  .profile-bio { font-size: 12px; }
+  .panel-watermark { width: 170px; height: 170px; top: 83px; right: -55px; opacity: .04; }
+  .contacts-heading h2 { font-size: 20px; }
+  .contacts-heading p { font-size: 10px; }
+  .contact-grid { gap: 9px; }
+  .contact-card { padding: 13px 11px; gap: 10px; min-height: 112px; }
+  .contact-icon { width: 32px; height: 32px; border-radius: 8px; justify-content: center; }
+  .contact-icon svg { width: 19px; height: 19px; }
+  .contact-platform { font-size: 10px; }
+  .contact-value { font-size: 11px; }
+  .contact-arrow { width: 13px; height: 13px; }
+  .profile-actions { margin-top: 20px; }
+  .intro-top > span { padding: 6px 9px; }
+}
+@media (max-width: 360px) {
+  .profile-panel { --panel-x: 16px; }
+  .profile-overview { column-gap: 15px; }
+  h1 { font-size: 24px; }
+  .japanese-name { font-size: 11px; }
+  .role { font-size: 9px; padding-inline: 6px; }
+  .contact-card { padding: 11px 9px; }
+  .contact-value { font-size: 10px; }
+}
