@@ -1,0 +1,9 @@
+export const locales = ["en", "vi", "ja"] as const;
+export type Locale = typeof locales[number];
+export const isLocale = (value: string): value is Locale => locales.includes(value as Locale);
+export const languageNames = { en: "English", vi: "Tiếng Việt", ja: "日本語" };
+export const dictionaries = {
+  en: { profile: "Digital business card", connect: "Contact", connectNote: "Choose the channel that works best for you.", phone: "Phone", email: "Email", website: "Website", empty: "Contact details will be available here soon.", save: "Save contact", saveNote: "Add my details directly to your phone.", share: "Share profile", copied: "Link copied", fallback: "Copy the browser address to share.", skip: "Skip intro", welcome: "Welcome", language: "Choose language", footer: "Tap once. Stay connected.", introLabel: "A private introduction", skipContent: "Skip to content" },
+  vi: { profile: "Danh thiếp điện tử", connect: "Thông tin liên hệ", connectNote: "Chọn kênh liên lạc phù hợp với bạn.", phone: "Điện thoại", email: "Email", website: "Website", empty: "Thông tin liên hệ sẽ sớm được cập nhật tại đây.", save: "Lưu danh bạ", saveNote: "Thêm thông tin trực tiếp vào điện thoại.", share: "Chia sẻ hồ sơ", copied: "Đã sao chép liên kết", fallback: "Sao chép địa chỉ trình duyệt để chia sẻ.", skip: "Bỏ qua mở đầu", welcome: "Chào mừng", language: "Chọn ngôn ngữ", footer: "Một chạm. Luôn kết nối.", introLabel: "Một lời giới thiệu riêng", skipContent: "Đến nội dung chính" },
+  ja: { profile: "デジタル名刺", connect: "連絡先", connectNote: "ご都合のよい方法でご連絡ください。", phone: "電話", email: "メール", website: "ウェブサイト", empty: "連絡先は近日中に掲載いたします。", save: "連絡先を保存", saveNote: "連絡先を端末に保存します。", share: "プロフィールを共有", copied: "リンクをコピーしました", fallback: "ブラウザのアドレスをコピーしてください。", skip: "イントロをスキップ", welcome: "ようこそ", language: "言語を選択", footer: "ワンタップで、つながる。", introLabel: "プライベートなご紹介", skipContent: "本文へ移動" },
+};
